@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<fronted.version>1.11.2</fronted.version>
+		<docker.spotify.version>1.4.13</docker.spotify.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -74,6 +75,27 @@
 						<include>*Test.java</include>
 					</includes>
 					<excludedGroups>com.assignment.stack.IntegrationTest</excludedGroups>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${docker.spotify.version}</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>bajpaiadarsh3/stack</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
 				</configuration>
 			</plugin>
 
@@ -161,6 +183,7 @@
 								</execution>
 							</executions>
 						</plugin>
+
 					</plugins>
 				</build>
 		</profile>
