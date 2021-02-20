@@ -1,0 +1,6 @@
+spring:
+  profiles: test
+
+app:
+  stack:
+    size: 2

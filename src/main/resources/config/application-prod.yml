@@ -1,0 +1,11 @@
+
+server:
+  port: ${PORT}
+
+
+spring:
+  profiles: prod
+
+app:
+  stack:
+    size: ${STACK_SIZE}
